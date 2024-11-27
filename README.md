@@ -1,2 +1,2 @@
-# Game-python-laba-2
-Лабораторная 2 по ООП
+# Game-python-full
+RКурсовая работа по АлгИПрог
