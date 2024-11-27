@@ -1,5 +1,6 @@
 import flet as ft
 from interface import MainMenu, GameWindow
+from game2 import Level2
 
 class Game:
     def __init__(self, page: ft.Page):
@@ -95,13 +96,14 @@ class Game:
             self.game_window.append_text("Вы в комнате с двумя дверями. Куда пойдете? (налево/направо)")
 
     def win_game(self):
-        self.game_window.append_text("🎉 Поздравляем! Вы выбрались из замка и выиграли игру! 🎉 Если хотите играть дальше купите полную версию игры")
+        self.game_window.append_text("🎉 Поздравляем! Вы выбрались из замка и выиграли игру! 🎉")
         self.current_room = 'start'
         self.game_window.disable_input()
 
         if not self.buttons_added:
             self.page.clean()  # Очистим страницу перед добавлением новых кнопок
             self.page.add(self.game_window.story)  # Добавим снова элемент story для отображения текста
+            self.page.add(ft.ElevatedButton(text="Перейти на Уровень 2", on_click=self.start_level2))
             self.page.add(ft.ElevatedButton(text="Начать сначала", on_click=self.restart_game))
             self.page.add(ft.ElevatedButton(text="В меню", on_click=self.return_to_menu))
             self.buttons_added = True
@@ -121,6 +123,11 @@ class Game:
         self.buttons_added = False  # Сброс флага при возврате в меню
         self.page.clean()
         self.main_menu.show_menu_screen()
+
+    def start_level2(self, e=None):
+        self.page.clean()
+        self.level2 = Level2(self.page, self.start_game)
+        self.level2.next_step()  # Начнем с первого шага
 
 if __name__ == "__main__":
     ft.app(target=Game)

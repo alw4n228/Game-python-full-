@@ -7,15 +7,15 @@ class MainMenu:
         self.page.window_height = 800
         self.page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
         self.page.vertical_alignment = ft.MainAxisAlignment.CENTER
-        self.page.bgcolor = ft.colors.BLUE_GREY_900  # Темный синий фон
+        self.page.bgcolor = '#264653'  # Темно-зеленый фон
         
         self.start_game_callback = start_game_callback
 
         # Главное меню
         self.menu_screen = ft.Column(
             controls=[
-                ft.Text("Добро пожаловать в игру! (Демо)", size=28, color=ft.colors.CYAN_100),  # Крупный текст светло-синий
-                ft.ElevatedButton(text="Играть", on_click=self.show_levels, bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE)  # Бирюзовые кнопки
+                ft.Text("Добро пожаловать в игру!", size=28, color='#E9C46A'),  # Крупный текст бежевый
+                ft.ElevatedButton(text="Играть", on_click=self.show_levels, bgcolor='#2A9D8F', color='white')  # Зеленые кнопки, белый текст
             ],
             alignment=ft.MainAxisAlignment.CENTER,  # Выравнивание по центру по вертикали
             horizontal_alignment=ft.CrossAxisAlignment.CENTER  # Выравнивание по центру по горизонтали
@@ -31,9 +31,9 @@ class MainMenu:
     def show_levels(self, e):
         levels_screen = ft.Column(
             controls=[
-                ft.ElevatedButton(text="Уровень 1", on_click=lambda e: self.start_game_callback(1), bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE),
-                ft.ElevatedButton(text="Уровень 2 (В разработке)", bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE),
-                ft.ElevatedButton(text="Назад в меню", on_click=self.show_menu_screen, bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE)
+                ft.ElevatedButton(text="Уровень 1", on_click=lambda e: self.start_game_callback(1), bgcolor='#2A9D8F', color='white'),  # Зеленые кнопки, белый текст
+                ft.ElevatedButton(text="Уровень 2", bgcolor='#2A9D8F', color='white'),  # Зеленые кнопки, белый текст
+                ft.ElevatedButton(text="Назад в меню", on_click=self.show_menu_screen, bgcolor='#2A9D8F', color='white')  # Зеленые кнопки, белый текст
             ],
             alignment=ft.MainAxisAlignment.CENTER,  # Выравнивание по центру по вертикали
             horizontal_alignment=ft.CrossAxisAlignment.CENTER  # Выравнивание по центру по горизонтали
@@ -45,16 +45,16 @@ class MainMenu:
 class GameWindow:
     def __init__(self, page: ft.Page, handle_command_callback, restart_callback, menu_callback):
         self.page = page
-        self.page.bgcolor = ft.colors.BLUE_GREY_900  # Темный синий фон
+        self.page.bgcolor = '#264653'  # Темно-зеленый фон
         self.handle_command_callback = handle_command_callback
         self.restart_callback = restart_callback
         self.menu_callback = menu_callback
 
         # Элементы интерфейса
-        self.story = ft.Text("", size=20, color=ft.colors.CYAN_100)  # Крупный текст светло-синий
-        self.user_input = ft.TextField(hint_text="Введите вашу команду", width=400, text_align="center", color=ft.colors.WHITE)  # Основной текст белый
-        self.send_button = ft.ElevatedButton(text="Отправить", on_click=self.handle_command, bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE)
-        self.status = ft.Text("Инвентарь: Пусто", size=16, color=ft.colors.WHITE)  # Основной текст белый
+        self.story = ft.Text("", size=20, color='#2A9D8F')  # Крупный текст зеленый
+        self.user_input = ft.TextField(hint_text="Введите вашу команду", width=400, text_align="center", color='#D4A373')  # Основной текст оливковый
+        self.send_button = ft.ElevatedButton(text="Отправить", on_click=self.handle_command, bgcolor='#2A9D8F', color='white')  # Зеленые кнопки, белый текст
+        self.status = ft.Text("Инвентарь: Пусто", size=16, color='#E9C46A')  # Основной текст бежевый
         
         self.page.add(
             ft.Column(
@@ -63,8 +63,8 @@ class GameWindow:
                     self.user_input,
                     self.send_button,
                     self.status,
-                    ft.ElevatedButton(text="Начать сначала", on_click=self.restart_callback, bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE),
-                    ft.ElevatedButton(text="В меню", on_click=self.menu_callback, bgcolor=ft.colors.CYAN_300, color=ft.colors.WHITE)
+                    ft.ElevatedButton(text="Начать сначала", on_click=self.restart_callback, bgcolor='#2A9D8F', color='white'),  # Зеленые кнопки, белый текст
+                    ft.ElevatedButton(text="В меню", on_click=self.menu_callback, bgcolor='#2A9D8F', color='white')  # Зеленые кнопки, белый текст
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,  # Выравнивание по центру по вертикали
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER  # Выравнивание по центру по горизонтали
